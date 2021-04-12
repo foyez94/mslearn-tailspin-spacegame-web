@@ -57,23 +57,11 @@ steps:
 - task: WhiteSource@21
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
-    steps:
-- task: SonarQubePrepare@4
-  displayName: 'Prepare apex-web code analysis on SonarQube'
-  inputs:
-    SonarQube: 'WBAD SonarQube'
-    scannerMode: CLI
-    configMode: 'file'
-  timeoutInMinutes: 300    
-- task: SonarQubeAnalyze@4
-  displayName: 'Run apex-web code analysis on SonarQube'
-- task: SonarQubePublish@4
-  displayName: 'Publish apex-web analysis results to quality gate on SonarQube'
-  inputs:
-    pollingTimeoutSec: '300'
-  continueOnError: true
-  timeoutInMinutes: 300
+    
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
+  
+  - task: SonarQubeAnalyze@4
+  displayName: 'Run apex-web code analysis on SonarQube'
