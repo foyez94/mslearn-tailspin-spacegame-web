@@ -62,6 +62,6 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
-  
-  - task: SonarQubeAnalyze@4
+
+- task: SonarQubeAnalyze@4
   displayName: 'Run apex-web code analysis on SonarQube'
